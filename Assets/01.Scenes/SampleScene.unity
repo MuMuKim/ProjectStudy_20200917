@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94e2f135aba01c4794655afe9ec34a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeObj: {fileID: 6371807165755387967, guid: c4734a7a0fa5a084486dbf7db0ebefb7,
+  placeObj: {fileID: 7629240752522483870, guid: 2476184e09485794abd1e1da5d6a9abf,
     type: 3}
 --- !u!4 &1114040582
 Transform:
