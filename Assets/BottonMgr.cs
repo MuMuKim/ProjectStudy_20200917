@@ -14,10 +14,14 @@ public class BottonMgr : MonoBehaviour
     // 큐브생성
     public void CreateCube()
     {
-        Debug.Log("BottonMgr ::: 큐브 생성");
-
+        GameObject gc = gameBoardMgr.guideCube;
         Transform gcp = gameBoardMgr.guideCube.transform;
-
-        Instantiate(cube, gcp.position, gcp.rotation);
+        // 생성된 큐브 자리에는 다른 큐브가 생기면 안된다
+        if (gc.activeSelf)
+        {           
+            Debug.Log("BottonMgr ::: 큐브 생성");
+            Instantiate(cube, gcp.position, gcp.rotation);
+        }
     }
+        
 }

@@ -28,8 +28,12 @@ public class GameBoardMgr : MonoBehaviour
             guideCube.transform.position = hit.transform.Find("CubePos").position;
             guideCube.transform.rotation = hit.transform.parent.rotation;
 
+            Debug.Log($"GameBoardMgr ::: hit.collider.gameObject.name // {hit.collider.gameObject.name}");
         }
-
+        else
+        {
+            guideCube.SetActive(false);
+        }
         //Ray ray = new Ray(cam.transform.position, cam.transform.forward * rayDistance);
         //RaycastHit hit;
 
