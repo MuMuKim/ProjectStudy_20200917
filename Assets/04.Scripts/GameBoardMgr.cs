@@ -9,20 +9,17 @@ using UnityEngine;
 
 public class GameBoardMgr : MonoBehaviour
 {
+    //ray
     public GameObject cam;
     public float rayDistance = 10.0f;
-
-    public GameObject guideCube;
     public LayerMask gridLayer;
 
-    void Start()
-    {
-        
-    }
+    //grid 위에 생성한 큐브
+    public GameObject guideCube;
 
     void Update()
     {
-        Ray ray = Camera.main.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward * rayDistance);
         RaycastHit hit;
 
         if(Physics.Raycast(ray, out hit, rayDistance, gridLayer))
@@ -30,6 +27,7 @@ public class GameBoardMgr : MonoBehaviour
             guideCube.SetActive(true);
             guideCube.transform.position = hit.transform.Find("CubePos").position;
             guideCube.transform.rotation = hit.transform.parent.rotation;
+
         }
 
         //Ray ray = new Ray(cam.transform.position, cam.transform.forward * rayDistance);
