@@ -10,7 +10,7 @@ public class TouchMgr : MonoBehaviour
 
     public GameObject gameBoard;
 
-    int cnt = 0;
+    public int cnt = 0;
 
     void Start()
     {

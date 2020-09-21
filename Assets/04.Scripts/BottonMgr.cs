@@ -71,4 +71,10 @@ public class BottonMgr : MonoBehaviour
         cubeList.Clear();
     }
 
+    // 게임보드 리셋
+    public void GbReset()
+    {
+        Destroy(touchMgr.gameBoard);
+        touchMgr.cnt = 0;
+    }
 }
