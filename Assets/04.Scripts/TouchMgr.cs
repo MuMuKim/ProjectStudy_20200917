@@ -8,6 +8,8 @@ public class TouchMgr : MonoBehaviour
     private Camera ARCamera;
     public GameObject placeObj;
 
+    public GameObject gameBoard;
+
     int cnt = 0;
 
     void Start()
@@ -37,17 +39,17 @@ public class TouchMgr : MonoBehaviour
             // 객체를 고정할 앵커를 생성
             var anchor = hit.Trackable.CreateAnchor(hit.Pose);
             // 객체를 생성
-            GameObject obj = Instantiate(placeObj
-                                        , hit.Pose.position
-                                        , Quaternion.identity
-                                        , anchor.transform);
+            gameBoard = Instantiate(placeObj
+                                  , hit.Pose.position
+                                  , Quaternion.identity
+                                  , anchor.transform);
             cnt++;
 
             // 생성한 객체가 사용자 쪽으로 바라도록 회전값 계산
             var rot = Quaternion.LookRotation(ARCamera.transform.position - hit.Pose.position);
 
             // 사용자 쪽 회전값 적용
-            obj.transform.rotation = Quaternion.Euler(ARCamera.transform.position.x
+            gameBoard.transform.rotation = Quaternion.Euler(ARCamera.transform.position.x
                                                       , rot.eulerAngles.y
                                                       , ARCamera.transform.position.z);
         }

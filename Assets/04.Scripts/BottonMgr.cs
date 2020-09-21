@@ -10,13 +10,12 @@ public class BottonMgr : MonoBehaviour
 {
     public GameObject cam;
     public GameObject cube;
+
     public GameBoardMgr gameBoardMgr;
+    public TouchMgr touchMgr;
 
-    private void Start()
-    {
-        
+    List<GameObject> cubeList =new List<GameObject>();
 
-    }
     // 큐브생성
     public void CreateCube()
     {
@@ -29,9 +28,19 @@ public class BottonMgr : MonoBehaviour
         if (gc.activeSelf)
         {
             Debug.Log("BottonMgr ::: 큐브 생성");
-            Instantiate(cube, gcp.position, gcp.rotation);
+
+            //GameObject obj = Instantiate(cube);
+            //obj.transform.position = gcp.position;
+            //obj.transform.rotation = gcp.rotation;
+
+            // 생성된 큐브를 obj변수에 담아 큐브 리스트에 넣는다.
+            GameObject obj = Instantiate(cube, gcp.position, gcp.rotation);
+            obj.transform.parent = touchMgr.gameBoard.transform;
+            cubeList.Add(obj);
         }
     }
+
+    // 큐브 삭제
     public void ReMoveCube()
     {
         Ray ray = new Ray(cam.transform.position, cam.transform.forward* 10f);
@@ -47,4 +56,19 @@ public class BottonMgr : MonoBehaviour
             }
         }
     }
+
+    // 큐브 리셋
+    public void ResetCube()
+    {
+        // 만들어진 큐브들을 리스트에 넣어주고, 리셋버튼을 누르면 삭제
+        // 큐브가 만들어진 순간 리스트에 들어간다
+        // 들어갈 리스트가 필요하다
+
+        for (int i = 0; i < cubeList.Count; i++)
+        {
+            Destroy(cubeList[i].gameObject);
+        }
+        cubeList.Clear();
+    }
+
 }
