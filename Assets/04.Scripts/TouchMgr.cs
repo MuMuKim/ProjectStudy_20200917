@@ -9,6 +9,7 @@ public class TouchMgr : MonoBehaviour
     public GameObject placeObj;
 
     int cnt = 0;
+
     void Start()
     {
         ARCamera = GameObject.Find("First Person Camera").GetComponent<Camera>();
@@ -50,6 +51,5 @@ public class TouchMgr : MonoBehaviour
                                                       , rot.eulerAngles.y
                                                       , ARCamera.transform.position.z);
         }
-
     }
 }

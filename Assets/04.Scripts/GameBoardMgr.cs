@@ -17,23 +17,39 @@ public class GameBoardMgr : MonoBehaviour
     //grid 위에 생성한 큐브
     public GameObject guideCube;
 
+    // 스크립트
+    public BottonMgr bottonMgr;
+
     void Update()
     {
         Ray ray = new Ray(cam.transform.position, cam.transform.forward * rayDistance);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, rayDistance, gridLayer))
+        if (Physics.Raycast(ray, out hit, rayDistance, gridLayer))
         {
-            guideCube.SetActive(true);
-            guideCube.transform.position = hit.transform.Find("CubePos").position;
-            guideCube.transform.rotation = hit.transform.parent.rotation;
+            //큐브일 때
+            if (hit.collider.CompareTag("CUBE"))
+            {
+                guideCube.SetActive(false);
+            }
+            //큐브가 아닐 때
+            else
+            {
+                guideCube.SetActive(true);
+                guideCube.transform.position = hit.transform.Find("CubePos").position;
+                guideCube.transform.rotation = hit.transform.parent.rotation;
+            }
 
-            Debug.Log($"GameBoardMgr ::: hit.collider.gameObject.name // {hit.collider.gameObject.name}");
+            //Debug.Log($"GameBoardMgr ::: hit.collider.gameObject.name // {hit.collider.gameObject.name}");
         }
         else
         {
             guideCube.SetActive(false);
         }
+
+
+
+
         //Ray ray = new Ray(cam.transform.position, cam.transform.forward * rayDistance);
         //RaycastHit hit;
 
