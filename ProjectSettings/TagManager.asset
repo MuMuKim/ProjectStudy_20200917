@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ManipulationSystem
   - CUBE
+  - CUBE2
   layers:
   - Default
   - TransparentFX

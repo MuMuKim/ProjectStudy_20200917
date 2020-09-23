@@ -5,7 +5,7 @@ using GoogleARCore;
 
 public class TouchMgr : MonoBehaviour
 {
-    private Camera ARCamera;
+    public Camera ARCamera;
     public GameObject placeObj;
 
     public GameObject gameBoard;
@@ -52,6 +52,8 @@ public class TouchMgr : MonoBehaviour
             gameBoard.transform.rotation = Quaternion.Euler(ARCamera.transform.position.x
                                                       , rot.eulerAngles.y
                                                       , ARCamera.transform.position.z);
+
+
         }
     }
 }

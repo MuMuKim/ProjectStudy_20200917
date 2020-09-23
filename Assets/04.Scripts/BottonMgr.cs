@@ -11,6 +11,9 @@ public class BottonMgr : MonoBehaviour
     public GameObject cam;
     public GameObject cube;
 
+    // 생성된큐브
+    public GameObject obj;
+
     public GameBoardMgr gameBoardMgr;
     public TouchMgr touchMgr;
 
@@ -34,7 +37,7 @@ public class BottonMgr : MonoBehaviour
             //obj.transform.rotation = gcp.rotation;
 
             // 생성된 큐브를 obj변수에 담아 큐브 리스트에 넣는다.
-            GameObject obj = Instantiate(cube, gcp.position, gcp.rotation);
+            obj = Instantiate(cube, gcp.position, gcp.rotation);
             obj.transform.parent = touchMgr.gameBoard.transform;
             cubeList.Add(obj);
         }

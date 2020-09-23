@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngineInternal;
 
 
 // 목표 : 그리드를 향해 레이를 쏴 가이드 큐브를 보이게 한다.
@@ -19,27 +21,44 @@ public class GameBoardMgr : MonoBehaviour
 
     // 스크립트
     public BottonMgr bottonMgr;
-
     void Update()
     {
         Ray ray = new Ray(cam.transform.position, cam.transform.forward * rayDistance);
         RaycastHit hit;
 
+        // 레이를 쏴 그리드를 검출
         if (Physics.Raycast(ray, out hit, rayDistance, gridLayer))
         {
-            //큐브일 때
+            // 생성된 큐브가 있을 때
             if (hit.collider.CompareTag("CUBE"))
             {
-                guideCube.SetActive(false);
+                guideCube.SetActive(false); // 가이드 큐브를 꺼놓는다.
+
+
+                Debug.Log("1층");
+                Debug.Log($"히트노말{hit.normal}");
+
+                // Hit된 노말백터가 백터3 up(y)과 같을 때 (X) 이유 : 월드가 아님
+                // Hit된 노말백터와 Hit된 오브젝트의 로컬up방향과 같을 때 (O)
+                if (hit.normal == hit.transform.up.normalized)
+                {
+                    Debug.Log("2층");
+                    guideCube.SetActive(true);
+
+                    guideCube.transform.position = hit.transform.GetChild(0).gameObject.transform.position;
+
+                }
+                    
+                
+                
             }
-            //큐브가 아닐 때
+            // 생성된 큐브가 없을 때
             else
             {
                 guideCube.SetActive(true);
                 guideCube.transform.position = hit.transform.Find("CubePos").position;
                 guideCube.transform.rotation = hit.transform.parent.rotation;
             }
-
             //Debug.Log($"GameBoardMgr ::: hit.collider.gameObject.name // {hit.collider.gameObject.name}");
         }
         else
