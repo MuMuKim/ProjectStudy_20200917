@@ -14,7 +14,6 @@ public class TouchMgr : MonoBehaviour
 
     void Start()
     {
-        ARCamera = GameObject.Find("First Person Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame

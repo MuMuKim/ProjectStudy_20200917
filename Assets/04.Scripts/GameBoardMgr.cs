@@ -21,10 +21,21 @@ public class GameBoardMgr : MonoBehaviour
 
     // 스크립트
     public BottonMgr bottonMgr;
+
+    // 박스컬러
+    GameObject currColor; //default 색 =빨강
+    GameObject thisColor; //cyan 레이에 맞았을때 색
+
+    //private GameObject currCube;
+
+    private GameObject prevCube;
+    private GameObject currCube;
+
     void Update()
     {
         Ray ray = new Ray(cam.transform.position, cam.transform.forward * rayDistance);
         RaycastHit hit;
+        Debug.DrawRay(cam.transform.position, cam.transform.forward * rayDistance, Color.yellow);
 
         // 레이를 쏴 그리드를 검출
         if (Physics.Raycast(ray, out hit, rayDistance, gridLayer))
@@ -33,15 +44,38 @@ public class GameBoardMgr : MonoBehaviour
             if (hit.collider.CompareTag("CUBE"))
             {
                 guideCube.SetActive(false); // 가이드 큐브를 꺼놓는다.
-                if(bottonMgr.obj == hit.collider.gameObject)
+
+                currColor = thisColor;
+                thisColor = hit.collider.gameObject;
+                hit.collider.gameObject.GetComponent<MeshRenderer>().material.color = Color.cyan;
+
+                if (currColor != null && currColor != thisColor)
                 {
-                    hit.collider.gameObject.GetComponent<MeshRenderer>().material.color = Color.cyan;
-                }
-                else
-                {
-                    bottonMgr.obj.GetComponent<MeshRenderer>().material.color = Color.red;
+                    currColor.GetComponent<MeshRenderer>().material.color = Color.red;
                 }
 
+
+                #region 창현 & 재현쌤 코드
+                //if (currCube != null && currCube != hit.collider.gameObject)
+                //{
+                //    currCube.GetComponent<MeshRenderer>().material.color = Color.red;
+                //}
+
+                //currCube = hit.collider.gameObject;
+                //currCube.GetComponent<MeshRenderer>().material.color = Color.cyan;
+
+
+                //currCube = hit.collider.gameObject;
+
+                //if (currCube != prevCube && prevCube != null)
+                //{
+                //    prevCube.GetComponent<MeshRenderer>().material.color = Color.red;
+                //}
+
+                //currCube.GetComponent<MeshRenderer>().material.color = Color.cyan;
+                //prevCube = currCube;
+                #endregion
+ 
                 // Debug.Log("1층");
                 // Debug.Log($"히트노말{hit.normal}");
 
@@ -53,11 +87,7 @@ public class GameBoardMgr : MonoBehaviour
                     guideCube.SetActive(true);
 
                     guideCube.transform.position = hit.transform.GetChild(0).gameObject.transform.position;
-
-                }
-                    
-                
-                
+                }    
             }
             // 생성된 큐브가 없을 때
             else
@@ -65,17 +95,27 @@ public class GameBoardMgr : MonoBehaviour
                 guideCube.SetActive(true);
                 guideCube.transform.position = hit.transform.Find("CubePos").position;
                 guideCube.transform.rotation = hit.transform.parent.rotation;
+                
+
+                if (thisColor != null)
+                {
+                    // thisColor의 색을 빨간색으로 바꾼다.
+                    thisColor.transform.GetComponent<MeshRenderer>().material.color = Color.red;
+                }
             }
             //Debug.Log($"GameBoardMgr ::: hit.collider.gameObject.name // {hit.collider.gameObject.name}");
         }
         else
         {
             guideCube.SetActive(false);
+            if (thisColor != null)
+            {
+                // thisColor의 색을 빨간색으로 바꾼다.
+                thisColor.transform.GetComponent<MeshRenderer>().material.color = Color.red;
+            }
         }
 
-
-
-
+        #region 창현 코드
         //Ray ray = new Ray(cam.transform.position, cam.transform.forward * rayDistance);
         //RaycastHit hit;
 
@@ -92,5 +132,6 @@ public class GameBoardMgr : MonoBehaviour
         //    guideCube.transform.position = cubePos.position;
         //    guideCube.transform.rotation = hit.transform.parent.rotation;
         //}
+        #endregion
     }
 }

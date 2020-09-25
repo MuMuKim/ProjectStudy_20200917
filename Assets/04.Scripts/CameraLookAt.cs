@@ -15,9 +15,13 @@ public class CameraLookAt : MonoBehaviour
     void Update()
     {
         //if ( touchMgr.cnt == 1)
-       
-            transform.LookAt(transform.position + arCamera.transform.rotation * Vector3.back,
-                         arCamera.transform.rotation * Vector3.up);
-        
+
+        transform.LookAt(transform.position + arCamera.transform.rotation * Vector3.back,
+                     arCamera.transform.rotation * Vector3.up);
+        //Vector3 normalVec = arCamera.transform.position - transform.position;
+        //normalVec.Normalize();
+
+        //transform.rotation = Quaternion.LookRotation(normalVec);
+        //transform.LookAt(arCamera.transform.position);
     }
 }
