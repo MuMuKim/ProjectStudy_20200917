@@ -31,6 +31,10 @@ public class GameBoardMgr : MonoBehaviour
     private GameObject prevCube;
     private GameObject currCube;
 
+    // 조준점
+    public GameObject pointer;
+
+
     void Update()
     {
         Ray ray = new Ray(cam.transform.position, cam.transform.forward * rayDistance);
@@ -40,6 +44,11 @@ public class GameBoardMgr : MonoBehaviour
         // 레이를 쏴 그리드를 검출
         if (Physics.Raycast(ray, out hit, rayDistance, gridLayer))
         {
+            // 포인터의 액티브를 true로 바꾸고, 조준점을 카메라 가운데로 맞춘다
+            pointer.SetActive(true);
+            pointer.transform.position = hit.point + (hit.normal * 0.005f);
+            pointer.transform.rotation = Quaternion.LookRotation(hit.normal);
+
             // 생성된 큐브가 있을 때
             if (hit.collider.CompareTag("CUBE"))
             {

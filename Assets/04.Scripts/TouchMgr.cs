@@ -6,12 +6,18 @@ using GoogleARCore;
 public class TouchMgr : MonoBehaviour
 {
     public Camera ARCamera;
+
+    // 게임보드 프리팹
     public GameObject placeObj;
 
+    // 생성된 게임보드
+    [HideInInspector]
     public GameObject gameBoard;
 
+    // 게임보드 생성횟수
     public int cnt = 0;
 
+    
     void Start()
     {
     }
@@ -35,6 +41,8 @@ public class TouchMgr : MonoBehaviour
                                                          , raycastFilter
                                                          , out hit))
         {
+            
+
             // 객체를 고정할 앵커를 생성
             var anchor = hit.Trackable.CreateAnchor(hit.Pose);
             // 객체를 생성

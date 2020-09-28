@@ -13,6 +13,7 @@ public class BottonMgr : MonoBehaviour
     public GameObject cube;
 
     // 생성된큐브
+    [HideInInspector]
     public GameObject obj;
 
     public GameBoardMgr gameBoardMgr;
