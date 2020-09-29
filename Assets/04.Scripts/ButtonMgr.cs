@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 // 큐브 생성 , 삭제 , 리셋 , 게임보드 삭제 버튼 생성 및 실행
 
-public class ButtonMgr : MonoBehaviour
+public class BottonMgr : MonoBehaviour
 {
     public GameObject cam;
     public GameObject cube;
-    public BoxCollider cameraColl;
 
     // 생성된큐브
     [HideInInspector]
     public GameObject obj;
 
-    // 스크립트
     public GameBoardMgr gameBoardMgr;
     public TouchMgr touchMgr;
 
@@ -98,13 +95,12 @@ public class ButtonMgr : MonoBehaviour
         // 슬라이드를 조절한다.
         // 게임보드 값을 받아온다.
         
-        boardScale = boadeSize_slider.value;
+            boardScale = boadeSize_slider.value;
 
-        Vector3 scale = new Vector3(boardScale, boardScale, boardScale);
-        touchMgr.gameBoard.transform.localScale = scale;
-        gameBoardMgr.guideCube.transform.localScale = scale;
-        gameBoardMgr.pointer.transform.localScale = scale;
-        cameraColl.size = scale;
+            Vector3 scale = new Vector3(boardScale, boardScale, boardScale);
+            touchMgr.gameBoard.transform.localScale = scale;
+            gameBoardMgr.guideCube.transform.localScale = scale;
+            gameBoardMgr.pointer.transform.localScale = scale;
         //GameObject gameBoard = touchMgr.gameBoard;
         //Vector3 originalBoardSize = gameBoard.transform.localScale;
         //float scaleFactor = boadeSize_slider.value;

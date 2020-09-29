@@ -20,7 +20,7 @@ public class GameBoardMgr : MonoBehaviour
     public GameObject guideCube;
 
     // 스크립트
-    public BottonMgr bottonMgr;
+    public ButtonMgr buttonMgr;
 
     // 박스컬러
     GameObject currColor; //default 색 =빨강
