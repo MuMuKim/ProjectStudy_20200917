@@ -100,6 +100,7 @@ public class BottonMgr : MonoBehaviour
             Vector3 scale = new Vector3(boardScale, boardScale, boardScale);
             touchMgr.gameBoard.transform.localScale = scale;
             gameBoardMgr.guideCube.transform.localScale = scale;
+            gameBoardMgr.pointer.transform.localScale = scale;
         //GameObject gameBoard = touchMgr.gameBoard;
         //Vector3 originalBoardSize = gameBoard.transform.localScale;
         //float scaleFactor = boadeSize_slider.value;

@@ -48,7 +48,6 @@ public class GameBoardMgr : MonoBehaviour
             pointer.SetActive(true);
             pointer.transform.position = hit.point + (hit.normal * 0.005f);
             pointer.transform.rotation = Quaternion.LookRotation(hit.normal);
-
             // 생성된 큐브가 있을 때
             if (hit.collider.CompareTag("CUBE"))
             {
