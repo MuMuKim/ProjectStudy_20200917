@@ -23,7 +23,7 @@ public class VideoCtrl : MonoBehaviour
             if (currentTime >= creatTime)
             {
                 Debug.Log("영상 끝");
-                SceneManager.LoadScene("GamePlayScene");
+                SceneManager.LoadScene("01.GameStart");
             }
         }
     }
