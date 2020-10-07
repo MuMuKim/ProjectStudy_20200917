@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ArreyCheck : MonoBehaviour
 {
@@ -9,14 +10,22 @@ public class ArreyCheck : MonoBehaviour
 
     int cnt = 0;
 
+    bool arreyCompare = false;
+
     public void CheckCube()
     {
+        if(cnt != 0)
+        {
+            cnt = 0;
+        }
+
         for (int i = 0; i < rayIndex.Length; i++)
         {
             Ray ray = new Ray(rayIndex[i].gameObject.transform.position,
-                                rayIndex[i].gameObject.transform.forward* 10f);
+                                rayIndex[i].gameObject.transform.forward * 10f);
             RaycastHit hit;
-            if(Physics.Raycast(ray,out hit,10f,1<<8))
+            Debug.DrawRay(rayIndex[i].transform.position, rayIndex[i].transform.forward * 10, Color.yellow);
+            if (Physics.Raycast(ray, out hit, 10f, 1<<8))
             {
                 print("검출" + rayIndex[i]);
                 // answerIndex[0] = hit.collider.gameObject;
@@ -25,8 +34,8 @@ public class ArreyCheck : MonoBehaviour
                 {
                     ++cnt;
                     print("카운트" +cnt);
-
-                    if (cnt == 3f)
+                    // arreyCompare = rayIndex.SequenceEqual(answerIndex); 배열간 비교
+                    if (cnt ==3)
                     {
                         print("정답");
                     }

@@ -15,6 +15,7 @@ public class TouchMgr : MonoBehaviour
     public GameObject gameBoard;
 
     // 게임보드 생성횟수
+    [HideInInspector]
     public int cnt = 0;
 
     

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 // 큐브 생성 , 삭제 , 리셋 , 게임보드 삭제 버튼 생성 및 실행
 
-public class BottonMgr : MonoBehaviour
+public class ButtonMgr : MonoBehaviour
 {
     public GameObject cam;
     public GameObject cube;
@@ -16,16 +16,22 @@ public class BottonMgr : MonoBehaviour
     [HideInInspector]
     public GameObject obj;
 
+    // 스크립트
     public GameBoardMgr gameBoardMgr;
     public TouchMgr touchMgr;
 
-    public List<GameObject> cubeList =new List<GameObject>();
+    // 큐브리스트
+    private List<GameObject> cubeList =new List<GameObject>();
 
     // 슬라이더 
     public Slider boadeSize_slider;
-    public float boardScale;
+    private float boardScale;
 
-    // 큐브생성
+    // 큐브 이펙트
+    public GameObject createEffect; // 이펙트공장
+    public GameObject removeEffect;
+    public GameObject gbResetEffect;
+
     public void CreateCube()
     {
         // 게임보드 매니저 스크립트 
@@ -48,6 +54,16 @@ public class BottonMgr : MonoBehaviour
             obj.transform.localScale = gameBoardMgr.guideCube.transform.localScale;
             obj.transform.parent = touchMgr.gameBoard.transform;
             cubeList.Add(obj);
+
+            // 이펙트공장
+            GameObject effect = Instantiate(createEffect);
+            // 이펙트 스케일(슬라이드)
+            boardScale = boadeSize_slider.value;
+
+            Vector3 scale = new Vector3(boardScale, boardScale, boardScale);
+            effect.transform.localScale = scale;
+            // 이펙트가 생성될 장소
+            effect.transform.position = obj.transform.position;
         }
     }
 
@@ -64,6 +80,17 @@ public class BottonMgr : MonoBehaviour
                 GameObject obj = hit.collider.gameObject;
                 Destroy(obj);
                 Debug.Log("큐브삭제");
+
+
+                // 이펙트공장
+                GameObject effect = Instantiate(removeEffect);
+                // 이펙트 스케일(슬라이드)
+                boardScale = boadeSize_slider.value;
+
+                Vector3 scale = new Vector3(boardScale, boardScale, boardScale);
+                effect.transform.localScale = scale;
+                // 이펙트가 생성될 장소
+                effect.transform.position = obj.transform.position;
             }
         }
     }
@@ -85,6 +112,19 @@ public class BottonMgr : MonoBehaviour
     // 게임보드 리셋
     public void GbReset()
     {
+        // 이펙트공장
+        GameObject effect = Instantiate(gbResetEffect);
+        // 이펙트 스케일(슬라이드)
+        boardScale = boadeSize_slider.value;
+
+        Vector3 scale = new Vector3(boardScale, boardScale, boardScale);
+        effect.transform.localScale = scale;
+        // 이펙트가 생성될 장소
+        effect.transform.position = touchMgr.gameBoard.transform.position;
+
+        // 슬라이더값 초기화
+        boadeSize_slider.value = 0.1f;
+
         Destroy(touchMgr.gameBoard);
         touchMgr.cnt = 0;
     }

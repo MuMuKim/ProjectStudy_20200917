@@ -13,7 +13,7 @@ public class GameBoardMgr : MonoBehaviour
 {
     //ray
     public GameObject cam;
-    public float rayDistance = 10.0f;
+    private float rayDistance = 10.0f;
     public LayerMask gridLayer;
 
     //grid 위에 생성한 가이드 큐브

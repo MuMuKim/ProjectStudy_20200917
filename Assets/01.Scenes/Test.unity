@@ -1251,7 +1251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607338313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.5, z: -1}
+  m_LocalPosition: {x: -1, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1144776069}
@@ -2189,7 +2189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025262965}
   m_LocalRotation: {x: 0.21247059, y: -0, z: -0, w: 0.9771675}
-  m_LocalPosition: {x: -0.24, y: 2.41, z: -7.9}
+  m_LocalPosition: {x: -0.24, y: 2.41, z: -7.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2225,7 +2225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1025262965}
-  rayDistance: 10
   gridLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -3170,13 +3169,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1025262965}
   cube: {fileID: 6371807165755387967, guid: c4734a7a0fa5a084486dbf7db0ebefb7, type: 3}
-  cameraColl: {fileID: 0}
   obj: {fileID: 0}
   gameBoardMgr: {fileID: 1057435755}
   touchMgr: {fileID: 352247289}
-  cubeList: []
   boadeSize_slider: {fileID: 0}
-  boardScale: 0
+  createEffect: {fileID: 1284061706476094, guid: edfb9f67cb251a34fad2da554d582734,
+    type: 3}
+  removeEffect: {fileID: 0}
+  gbResetEffect: {fileID: 0}
 --- !u!4 &1538010309
 Transform:
   m_ObjectHideFlags: 0
@@ -3744,13 +3744,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1025262965}
   cube: {fileID: 6371807165755387967, guid: c4734a7a0fa5a084486dbf7db0ebefb7, type: 3}
-  cameraColl: {fileID: 0}
   obj: {fileID: 0}
   gameBoardMgr: {fileID: 1057435755}
   touchMgr: {fileID: 352247289}
-  cubeList: []
   boadeSize_slider: {fileID: 0}
-  boardScale: 0
+  createEffect: {fileID: 0}
+  removeEffect: {fileID: 0}
+  gbResetEffect: {fileID: 0}
 --- !u!1 &1716773906
 GameObject:
   m_ObjectHideFlags: 0

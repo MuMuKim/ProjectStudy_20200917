@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CameraCollider : MonoBehaviour
 {
-    public Button fakeCreat;
+    public GameObject fakeCreat;
     public GameObject Creat;
 
     private void OnTriggerEnter(Collider other)
