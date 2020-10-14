@@ -19,6 +19,7 @@ public class ButtonMgr : MonoBehaviour
     // 스크립트
     public GameBoardMgr gameBoardMgr;
     public TouchMgr touchMgr;
+    //public SoundMgr soundMgr;
 
     // 큐브리스트
     private List<GameObject> cubeList =new List<GameObject>();
@@ -31,6 +32,16 @@ public class ButtonMgr : MonoBehaviour
     public GameObject createEffect; // 이펙트공장
     public GameObject removeEffect;
     public GameObject gbResetEffect;
+
+    // 버튼 사운드
+    public AudioSource buttonSound;
+
+
+
+    private void Start()
+    {
+        buttonSound = GetComponent<AudioSource>();
+    }
 
     public void CreateCube()
     {

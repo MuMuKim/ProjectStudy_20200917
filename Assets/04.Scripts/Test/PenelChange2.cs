@@ -9,7 +9,12 @@ public class PenelChange2 : MonoBehaviour
     GameObject currPenel;
     GameObject nextPenel;
 
-    int panelIndex = 0;
+    public int panelIndex = 0;
+
+    public GameObject scene3;
+    public GameObject scene3_1;
+    public GameObject scene3_2;
+    public GameObject scene3_3;
 
     private void Start()
     {
@@ -36,6 +41,14 @@ public class PenelChange2 : MonoBehaviour
     //    }
     //}
 
+    public void BackToTheScene()
+    {
+        currPenel.SetActive(false);
+        panelIndex -= 1;
+        Debug.Log("패널인덱스" + panelIndex);
+        currPenel = sceneArrey[panelIndex];
+        currPenel.SetActive(true);
+    }
     public void ChangePanel()
     {
         print("ChangePanel()");
@@ -44,5 +57,23 @@ public class PenelChange2 : MonoBehaviour
         panelIndex += 1;
         currPenel = sceneArrey[panelIndex];
         currPenel.SetActive(true);
+    }
+    public void AloneMode1()
+    {
+        print("ChangePanel()");
+        scene3.SetActive(false);
+        scene3_1.SetActive(true);
+    }
+    public void AloneMode2()
+    {
+        print("ChangePanel()");
+        scene3.SetActive(false);
+        scene3_2.SetActive(true);
+    }
+    public void AloneMode3()
+    {
+        print("ChangePanel()");
+        scene3.SetActive(false);
+        scene3_3.SetActive(true);
     }
 }

@@ -6,6 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneMgr : MonoBehaviour
 {
+    // 스크립트
+    public SoundMgr soundMgr;
+
+    // 사운드
+    private AudioSource buttonSound;
+
+    private void Start()
+    {
+        buttonSound = GetComponent<AudioSource>();
+    }
     public void BackToTheScene()
     {
         Scene scene = SceneManager.GetActiveScene();

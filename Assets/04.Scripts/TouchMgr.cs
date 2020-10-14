@@ -18,7 +18,6 @@ public class TouchMgr : MonoBehaviour
     [HideInInspector]
     public int cnt = 0;
 
-    
     void Start()
     {
     }
