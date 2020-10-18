@@ -9,7 +9,7 @@ public class VideoCtrl : MonoBehaviour
     private VideoPlayer videoPlayer;
     float currentTime;
     [Range(1, 5)]
-    public float creatTime = 1f;
+    public float creatTime = 0.5f;
     void Start()
     {
         videoPlayer = GetComponent<VideoPlayer>();
