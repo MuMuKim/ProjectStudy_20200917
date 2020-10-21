@@ -18,7 +18,8 @@ public class PenelCtrlRight : MonoBehaviour
     Vector2 startPos = new Vector2 (1500,0) ;
 
     // 비교해줄 자료형
-    bool isOnButtonClicked = false;
+    [SerializeField]
+    public bool isOnButtonClicked = false;
 
     // Update is called once per frame
     void Update()

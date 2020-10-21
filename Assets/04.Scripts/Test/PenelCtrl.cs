@@ -18,7 +18,7 @@ public class PenelCtrl : MonoBehaviour
     public Vector2 endpos = Vector2.zero;
 
     // 버튼이 눌렸는지 안 눌렸는지 구분
-    bool isButtonClicked = false;
+    public bool isButtonClicked = false;
 
     void Update()
     {

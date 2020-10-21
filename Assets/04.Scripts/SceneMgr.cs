@@ -50,4 +50,8 @@ public class SceneMgr : MonoBehaviour
     {
         SceneManager.LoadScene("GamePlayScene");
     }
+    public void PanelTest()
+    {
+        SceneManager.LoadScene("PenelTest");
+    }
 }
